@@ -22,17 +22,24 @@ export default class Board extends Component {
         onDragOver={this.handleDragOver}
         onDragEnter={this.handleDragEnter}
       >
-        <div className="box">
-          {this.props.cards.map(card => 
-            <Card 
-              key={card.id}
-              card={card}
-              beforeBoard={this.props.id}
-              onDragStart={this.handleDragStart}
-              draggable="true"
-            />
-          )}
-        </div>
+        {this.props.box ?
+          <div className="box">
+            <section className="box-name">{this.props.box.name}</section>
+            {this.props.box.cards.map(card => 
+              <Card 
+                key={card.id}
+                card={card}
+                beforeBoard={this.props.id}
+                onDragStart={this.handleDragStart}
+                draggable="true"
+              />
+            )}
+          </div> :
+          <div className="add-box">
+            <i className="add-icon fas fa-plus"></i>
+            Add another list
+          </div>
+        }
       </div>
     )
   }
