@@ -11,7 +11,7 @@ export default class AddCard extends Component {
   render() {
     return (
       <div className="add-another-card">
-        {this.props.checkAdd ? 
+        {this.props.checkAddCard ? 
         <AddCardForm 
           onAddCard={this.handleAddCard} 
           boardId={this.props.boardId}

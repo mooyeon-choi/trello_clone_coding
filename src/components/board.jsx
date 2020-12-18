@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import AddList from './addList';
 import AddCard from './addCard';
 import Card from './card';
 
 export default class Board extends Component {
   state = {
-    checkAdd: false,
+    checkAddCard: false,
+    checkAddList: false
   }
   handleDragOver = event => {
     event.preventDefault();
@@ -19,16 +21,21 @@ export default class Board extends Component {
   }
 
   handleAdd = () => {
-    const checkAdd = !this.state.checkAdd
-    this.setState({ checkAdd })
+    const checkAddCard = !this.state.checkAddCard;
+    this.setState({ checkAddCard });
   }
 
   handleAddCard = (boardId, text) => {
     this.props.onAddCard(boardId, text);
   }
 
-  handleAddBox = () => {
-    alert('아직 구현되지 않은 동작입니다.')
+  handleChangeCheckAddList = () => {
+    const checkAddList = !this.state.checkAddList;
+    this.setState({ checkAddList });
+  }
+
+  handleAddList = (name) => {
+    this.props.onAddList(name);
   }
 
   render() {
@@ -39,10 +46,10 @@ export default class Board extends Component {
         onDragOver={this.handleDragOver}
         onDragEnter={this.handleDragEnter}
       >
-        {this.props.box ?
-          <div className="box">
-            <section className="box-name">{this.props.box.name}</section>
-            {this.props.box.cards.map(card => 
+        {this.props.list ?
+          <div className="list">
+            <section className="list-name">{this.props.list.name}</section>
+            {this.props.list.cards.map(card => 
               <Card 
                 key={card.id}
                 card={card}
@@ -52,19 +59,17 @@ export default class Board extends Component {
               />
             )}
             <AddCard 
-              checkAdd={this.state.checkAdd} 
+              checkAddCard={this.state.checkAddCard} 
               onAdd={this.handleAdd}
               onAddCard={this.handleAddCard}
               boardId={this.props.id}
             />
           </div> :
-          <div 
-            className="add-box"
-            onClick={this.handleAddBox}
-          >
-            <i className="add-icon fas fa-plus"></i>
-            Add another list
-          </div>
+          <AddList 
+            onAddList={this.handleAddList}
+            onChangeCheckAddList={this.handleChangeCheckAddList} 
+            checkAddList={this.state.checkAddList}
+          />
         }
       </div>
     )

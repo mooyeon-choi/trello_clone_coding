@@ -7,7 +7,6 @@ class AddCardForm extends Component {
   onSubmit = event => {
     event.preventDefault();
     const text = this.inputRef.current.value;
-    console.log(text)
     text && this.props.onAddCard(this.props.boardId, text);
     this.formRef.current.reset();
   }
