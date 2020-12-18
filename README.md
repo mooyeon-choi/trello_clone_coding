@@ -6,7 +6,7 @@
 
 [![MainPage](./images/mainpage.PNG)](https://mooyeon-choi.github.io/trello_clone_coding/)
 
-Trello Board를 보며 여러 기능들을 구현해보며 리액트 사용법을 익혀본 프로젝트입니다.
+Trello Board를 보고 여러 기능들을 구현해보며 리액트 사용법을 익혀본 프로젝트입니다.
 
 주요 기능들
 
