@@ -1,19 +1,15 @@
 import React, { Component } from 'react'
+import AddCardForm from './addCardForm';
 
 export default class AddCard extends Component {
-  handleAdd = () => {
-    this.props.onAdd();
+  handleAddCard = text => {
+    this.props.onAddCard(text);
   }
   render() {
     return (
       <div className="add-another-card">
         {this.props.checkAdd ? 
-        <div>
-          <button className="add-card-button">Add Card</button>
-          <button className="add-cancel-button">
-            <i className="cancel-icon fas fa-times"></i>
-          </button>
-        </div> 
+        <AddCardForm onAddCard={this.handleAddCard}/>
         : 
         <section className="add-another-card-button" onClick={this.handleAdd}>
           <i className="add-icon fas fa-plus"></i>
