@@ -6,9 +6,9 @@ import Navbar from './components/navbar';
 class App extends Component {
   state = {
     boards: [
-      {id:0, box: {name:"To Do", cards: [{id: 'card_1', text: 'Card 1'}]}},
-      {id:1, box: {name:"Doing", cards: [{id: 'card_2', text: 'Card 2'}]}},
-      {id:2, box: {name:"Done", cards: [{id: 'card_3', text: 'Card 3'}]}},
+      {id:0, box: {name:"To Do", cards: [{id: 'card_1', text: 'React 공부'}]}},
+      {id:1, box: {name:"Doing", cards: [{id: 'card_2', text: 'JavaScript 공부'}]}},
+      {id:2, box: {name:"Done", cards: [{id: 'card_3', text: '아침 운동'}]}},
       {id:3, box: null}
     ],
     card: null,

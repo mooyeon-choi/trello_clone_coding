@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
+import AddCard from './addCard';
 import Card from './card';
 
 export default class Board extends Component {
+  state = {
+    checkAdd: false,
+  }
   handleDragOver = event => {
     event.preventDefault();
   }
@@ -12,6 +16,11 @@ export default class Board extends Component {
 
   handleDragStart = card => {
     this.props.onDragStart(card);
+  }
+
+  handleAdd = () => {
+    const checkAdd = !this.state.checkAdd
+    this.setState({ checkAdd })
   }
 
   render() {
@@ -34,6 +43,7 @@ export default class Board extends Component {
                 draggable="true"
               />
             )}
+            <AddCard checkAdd={this.state.checkAdd} onAdd={this.handleAdd}/>
           </div> :
           <div className="add-box">
             <i className="add-icon fas fa-plus"></i>

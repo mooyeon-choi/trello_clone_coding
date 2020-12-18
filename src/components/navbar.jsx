@@ -4,7 +4,7 @@ class Navbar extends Component {
   render() {
     return (
       <nav className="navbar">
-        <img src="/images/navbar_logo.png" alt="logo" className="navbar-logo"/>
+        <img src="https://github.com/mooyeon-choi/trello_clone_coding/blob/master/public/images/navbar_logo.png?raw=true" alt="logo" className="navbar-logo"/>
       </nav>
     );
   }
