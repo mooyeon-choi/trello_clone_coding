@@ -36,6 +36,12 @@ class App extends Component {
     this.setState({ card });
   }
 
+  handleAddCard = (boardId, text) => {
+    const boards = this.state.boards;
+    boards[boardId].box.cards = [...boards[boardId].box.cards, { id: Date.now(), text }]
+    this.setState({ boards })
+  }
+
   render() {
     return (
       <div>
@@ -49,6 +55,7 @@ class App extends Component {
               className="board"
               onDragEnter={this.handleDragEnter}
               onDragStart={this.handleDragStart}
+              onAddCard={this.handleAddCard}
             />
           )}
         </div>

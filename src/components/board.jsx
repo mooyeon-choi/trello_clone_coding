@@ -23,6 +23,14 @@ export default class Board extends Component {
     this.setState({ checkAdd })
   }
 
+  handleAddCard = (boardId, text) => {
+    this.props.onAddCard(boardId, text);
+  }
+
+  handleAddBox = () => {
+    alert('아직 구현되지 않은 동작입니다.')
+  }
+
   render() {
     return (
       <div
@@ -43,9 +51,17 @@ export default class Board extends Component {
                 draggable="true"
               />
             )}
-            <AddCard checkAdd={this.state.checkAdd} onAdd={this.handleAdd}/>
+            <AddCard 
+              checkAdd={this.state.checkAdd} 
+              onAdd={this.handleAdd}
+              onAddCard={this.handleAddCard}
+              boardId={this.props.id}
+            />
           </div> :
-          <div className="add-box">
+          <div 
+            className="add-box"
+            onClick={this.handleAddBox}
+          >
             <i className="add-icon fas fa-plus"></i>
             Add another list
           </div>
