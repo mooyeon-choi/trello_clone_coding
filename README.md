@@ -8,11 +8,13 @@
 
 Trello Board를 보고 여러 기능들을 구현해보며 리액트 사용법을 익혀본 프로젝트입니다.
 
-주요 기능들
+현재 진행상황
 
 * List 추가
 * Card 추가
 * Card Drag & Drop
+* List Drag & Drop
+* List 설정(진행중)
 
 ## Built With
 
