@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import AddList from './addList';
 import AddCard from './addCard';
 import Card from './card';
+import ListSetting from './listSetting';
 
 export default class Board extends Component {
   state = {
     checkAddCard: false,
-    checkAddList: false
+    checkAddList: false,
+    openSetting: false
   }
   handleDragOver = event => {
     event.preventDefault();
@@ -18,6 +20,10 @@ export default class Board extends Component {
 
   handleDragStart = card => {
     this.props.onDragStart(card);
+  }
+
+  handleListDragStart = () => {
+    this.props.onDragStart(this.props.list);
   }
 
   handleAdd = () => {
@@ -38,6 +44,11 @@ export default class Board extends Component {
     this.props.onAddList(name);
   }
 
+  handleSetting = () => {
+    const openSetting = !this.state.openSetting;
+    this.setState({ openSetting })
+  }
+
   render() {
     return (
       <div
@@ -48,7 +59,17 @@ export default class Board extends Component {
       >
         {this.props.list ?
           <div className="list">
-            <section className="list-name">{this.props.list.name}</section>
+            <section 
+              className="list-name"
+              onDragStart={this.handleListDragStart}
+              draggable="true"
+            >
+              {this.props.list.name}
+              <div className="list-setting" onClick={this.handleSetting}>
+                <i className="fas fa-ellipsis-h"></i>
+                { this.state.openSetting && <ListSetting /> }
+              </div>
+            </section>
             {this.props.list.cards.map(card => 
               <Card 
                 key={card.id}

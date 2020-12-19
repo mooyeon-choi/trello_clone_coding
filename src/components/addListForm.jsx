@@ -19,7 +19,7 @@ export default class AddListForm extends Component {
   render() {
     return (
       <form ref={this.formRef} className="add-list-form" onSubmit={this.onSubmit}>
-      <input ref={this.inputRef} type="text" className="add-list-input" placeholder="Enter a title for this card..."/>
+      <input ref={this.inputRef} type="text" className="add-list-input" placeholder="Enter a title for this list..."/>
       <div>
         <button className="add-card-button">Add List</button>
         <button 
