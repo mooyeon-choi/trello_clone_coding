@@ -175,6 +175,11 @@ body {
   font-size: 0.9rem;
 }
 
+.list-setting-item:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
 .list-setting-background {
   position: fixed;
   z-index: 90;

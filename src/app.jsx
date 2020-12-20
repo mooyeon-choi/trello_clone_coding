@@ -67,6 +67,11 @@ class App extends Component {
     this.setState({ boards })
   }
 
+  handleDeleteList = boardId => {
+    const boards = this.state.boards.filter(item => item.id !== boardId);
+    this.setState({ boards })
+  }
+
   render() {
     return (
       <div>
@@ -83,6 +88,7 @@ class App extends Component {
               onDragStart={this.handleDragStart}
               onAddCard={this.handleAddCard}
               onAddList={this.handleAddList}
+              onDeleteList={this.handleDeleteList}
             />
           )}
         </div>

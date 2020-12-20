@@ -4,6 +4,11 @@ class ListSetting extends Component {
   blockTransmission = event => {
     event.stopPropagation()
   }
+
+  handleDeleteList = () => {
+    this.props.onDeleteList(this.props.boardId);
+  }
+
   render() {
     return (
       <div>
@@ -11,7 +16,7 @@ class ListSetting extends Component {
           <li className="list-setting-title">List Actions</li>
           <hr/>
           <li className="list-setting-item">수정하기</li>
-          <li className="list-setting-item">삭제하기</li>
+          <li className="list-setting-item" onClick={this.handleDeleteList}>삭제하기</li>
         </ul>
         <div className="list-setting-background"></div>
       </div>

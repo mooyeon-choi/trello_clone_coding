@@ -9,6 +9,7 @@ export default class AddListForm extends Component {
     const name = this.inputRef.current.value;
     name && this.props.onAddList(name);
     this.formRef.current.reset();
+    this.props.onCancel();
   }
 
   handleCancel = () => {

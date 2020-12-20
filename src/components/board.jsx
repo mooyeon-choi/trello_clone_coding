@@ -49,6 +49,10 @@ export default class Board extends Component {
     this.setState({ openSetting })
   }
 
+  handleDeleteList = boardId => {
+    this.props.onDeleteList(boardId);
+  }
+
   render() {
     return (
       <div
@@ -67,7 +71,7 @@ export default class Board extends Component {
               {this.props.list.name}
               <div className="list-setting" onClick={this.handleSetting}>
                 <i className="fas fa-ellipsis-h"></i>
-                { this.state.openSetting && <ListSetting /> }
+                { this.state.openSetting && <ListSetting boardId={this.props.id} onDeleteList={this.handleDeleteList}/> }
               </div>
             </section>
             {this.props.list.cards.map(card => 
