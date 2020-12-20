@@ -12,6 +12,8 @@ class App extends Component {
       {id:"3", list: null}
     ],
     item: null,
+    clickFrame: null,
+    updateListName: null,
   }
 
   handleDragEnter = event => {
@@ -72,9 +74,22 @@ class App extends Component {
     this.setState({ boards })
   }
 
+  checkClickFrame = event => {
+    if (event.target.className !== "add-list-input" && event.target.className !== "list-name") {
+      this.setState({ onUpdateListName: null })
+    } 
+    console.log(event.target.className)
+  }
+
+  handleChangeListName = listName => {
+    const onUpdateListName = listName;
+    console.log(listName)
+    this.setState({ onUpdateListName })
+  }
+
   render() {
     return (
-      <div>
+      <div onClick={this.checkClickFrame}>
         <Navbar />
         <div className="flexbox">
           {this.state.boards.map(board =>
@@ -89,6 +104,9 @@ class App extends Component {
               onAddCard={this.handleAddCard}
               onAddList={this.handleAddList}
               onDeleteList={this.handleDeleteList}
+              onClickFrame={this.checkClickFrame}
+              onUpdateListName={this.state.onUpdateListName}
+              onChangeListName={this.handleChangeListName}
             />
           )}
         </div>

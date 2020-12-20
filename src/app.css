@@ -118,19 +118,31 @@ body {
   margin-bottom: 10px;
 }
 
-.list-name {
+.list-name-space {
   display: flex;
   justify-content: space-between;
 
   width: 100%;
   height: 40px;
   color: white;
+}
+
+.list-name {
+  width: 100%;
+  height: 40px;
   padding: 15px 10px 20px 20px;
 }
 
+.update-list-form {
+  width: 100%;
+  height: 40px;
+  color: white;
+  padding: 10px;
+}
+
 .list-setting {
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 50px;
 
   border: 0;
   border-radius: 3px;
@@ -140,7 +152,7 @@ body {
   font-size: 1.3rem;
   color: white;
 
-  margin-top: -7px;
+  padding: 8px 10px 20px 0;
 
   user-select: none;
 }

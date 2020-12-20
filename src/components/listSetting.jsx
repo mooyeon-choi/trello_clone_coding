@@ -20,8 +20,8 @@ class ListSetting extends Component {
         <ul className="list-setting-items" onClick={this.blockTransmission}>
           <li className="list-setting-title">List Actions</li>
           <hr/>
-          <li className="list-setting-item">수정하기</li>
-          <li className="list-setting-item" onClick={this.handleDeleteList}>삭제하기</li>
+          <li className="list-setting-item">Change List Name...</li>
+          <li className="list-setting-item" onClick={this.handleDeleteList}>Delete List</li>
         </ul>
         <div className="list-setting-background"></div>
       </div>

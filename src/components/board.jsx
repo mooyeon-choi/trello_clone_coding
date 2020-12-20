@@ -3,6 +3,7 @@ import AddList from './addList';
 import AddCard from './addCard';
 import Card from './card';
 import ListSetting from './listSetting';
+import UpdateListForm from './updateListForm';
 
 export default class Board extends Component {
   state = {
@@ -11,6 +12,7 @@ export default class Board extends Component {
     openSetting: false,
     onListDraggable: true
   }
+
   handleDragOver = event => {
     event.preventDefault();
   }
@@ -59,9 +61,13 @@ export default class Board extends Component {
     this.setState({ onListDraggable });
   }
 
-  onListDraggable = () => {
+  handleOnListDraggable = () => {
     const onListDraggable = "true";
     this.setState({ onListDraggable });
+  }
+
+  handleChangeListName = () => {
+    this.props.onChangeListName(this.props.list.name);
   }
 
   render() {
@@ -74,17 +80,26 @@ export default class Board extends Component {
       >
         {this.props.list ?
           <div className="list">
+            { this.props.onUpdateListName === this.props.list.name ? 
+            <UpdateListForm listName={this.props.list.name}/>
+            :
             <section 
-              className="list-name"
-              onDragStart={this.handleListDragStart}
-              draggable={this.state.onListDraggable}
+              className="list-name-space"
             >
-              {this.props.list.name}
+              <section 
+                className="list-name"
+                onDragStart={this.handleListDragStart}
+                draggable={this.state.onListDraggable}
+                onClick={this.handleChangeListName}
+              >
+                {this.props.list.name}
+              </section>
               <div onMouseLeave={this.onListDraggable} onMouseOver={this.closeListDraggable} className="list-setting" onClick={this.handleSetting}>
                 <i className="fas fa-ellipsis-h"></i>
-                { this.state.openSetting && <ListSetting boardId={this.props.id} onDeleteList={this.handleDeleteList} onListDraggable={this.onListDraggable} /> }
+                { this.state.openSetting && <ListSetting boardId={this.props.id} onDeleteList={this.handleDeleteList} onListDraggable={this.handleOnListDraggable} /> }
               </div>
             </section>
+            }
             {this.props.list.cards.map(card => 
               <Card 
                 key={card.id}
