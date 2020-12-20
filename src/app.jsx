@@ -19,10 +19,11 @@ class App extends Component {
   handleDragEnter = event => {
     event.preventDefault();
     const target = event.target;
-    if (target.id.length > 0 && this.state.boards.find(item => item.id === target.id).list) {
+    console.log(target.id.length)
+    if (target.id.length > 0) if (this.state.boards.find(item => item.id === target.id).list) {
       const boards = this.state.boards;
       if (this.state.item.type === "card") {
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < boards.length - 1; i++) {
           const board = boards[i]
           const card = this.state.item
           if (board.id.toString() === target.id) {
@@ -35,20 +36,20 @@ class App extends Component {
       } else if (this.state.item.type === "list") {
         const lists = [];
         const list = this.state.item;
-        boards.forEach(board => {
-          board.list !== list && lists.push(board.list);
-        });
+        for (let i = 0; i < boards.length - 1; i ++) {
+          boards[i].list !== list && lists.push(boards[i].list);
+        }
         let index = 0;
-        boards.forEach(board => {
-          if (board.id !== target.id) {
-            board.list = lists[index];
+        for (let i = 0; i < boards.length - 1; i ++) {
+          if (boards[i].id !== target.id) {
+            boards[i].list = lists[index];
             index++;
           } else {
-            board.list = list;
+            boards[i].list = list;
           }
-        });
-        this.setState({ boards })
+        }
       }
+      this.setState({ boards })
     }
   }
 
@@ -59,13 +60,14 @@ class App extends Component {
 
   handleAddCard = (boardId, text) => {
     const boards = this.state.boards;
-    boards.find(item => item.id === boardId).list.cards = [...boards.find(item => item.id === boardId).list.cards, { id: Date.now(), type: "card", text }]
+    boards.find(item => item.id === boardId).list.cards = [...boards.find(item => item.id === boardId).list.cards, { id: Date.now().toString(), type: "card", text }]
     this.setState({ boards })
   }
 
   handleAddList = name => {
     const before = this.state.boards;
-    const boards = [...before.slice(0, before.length - 1), {id: Date.now(), type: "card", list: { name , cards: []}}, before[before.length - 1]]
+    const boards = [...before.slice(0, before.length - 1), {id: Date.now().toString(), list: { name, type: "list", cards: []}}, before[before.length - 1]]
+    console.log(boards)
     this.setState({ boards })
   }
 
