@@ -141,6 +141,8 @@ body {
   color: white;
 
   margin-top: -7px;
+
+  user-select: none;
 }
 
 .list-setting:hover {

@@ -2,16 +2,21 @@ import React, { Component } from 'react';
 
 class ListSetting extends Component {
   blockTransmission = event => {
-    event.stopPropagation()
+    event.preventDefault();
+    event.stopPropagation();
   }
 
   handleDeleteList = () => {
     this.props.onDeleteList(this.props.boardId);
   }
 
+  handleOnListDraggable = () => {
+    this.props.onListDraggable();
+  }
+
   render() {
     return (
-      <div>
+      <div onClick={this.handleOnListDraggable}>
         <ul className="list-setting-items" onClick={this.blockTransmission}>
           <li className="list-setting-title">List Actions</li>
           <hr/>

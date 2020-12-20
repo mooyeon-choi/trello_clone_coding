@@ -8,7 +8,8 @@ export default class Board extends Component {
   state = {
     checkAddCard: false,
     checkAddList: false,
-    openSetting: false
+    openSetting: false,
+    onListDraggable: true
   }
   handleDragOver = event => {
     event.preventDefault();
@@ -53,6 +54,16 @@ export default class Board extends Component {
     this.props.onDeleteList(boardId);
   }
 
+  closeListDraggable = () => {
+    const onListDraggable = "false";
+    this.setState({ onListDraggable });
+  }
+
+  onListDraggable = () => {
+    const onListDraggable = "true";
+    this.setState({ onListDraggable });
+  }
+
   render() {
     return (
       <div
@@ -66,12 +77,12 @@ export default class Board extends Component {
             <section 
               className="list-name"
               onDragStart={this.handleListDragStart}
-              draggable="true"
+              draggable={this.state.onListDraggable}
             >
               {this.props.list.name}
-              <div className="list-setting" onClick={this.handleSetting}>
+              <div onMouseLeave={this.onListDraggable} onMouseOver={this.closeListDraggable} className="list-setting" onClick={this.handleSetting}>
                 <i className="fas fa-ellipsis-h"></i>
-                { this.state.openSetting && <ListSetting boardId={this.props.id} onDeleteList={this.handleDeleteList}/> }
+                { this.state.openSetting && <ListSetting boardId={this.props.id} onDeleteList={this.handleDeleteList} onListDraggable={this.onListDraggable} /> }
               </div>
             </section>
             {this.props.list.cards.map(card => 
