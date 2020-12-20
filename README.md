@@ -4,7 +4,7 @@
 
 ## About The Project
 
-[![MainPage](./images/mainpage.PNG)](https://mooyeon-choi.github.io/trello_clone_coding/)
+[![Example](./images/example.gif)](https://mooyeon-choi.github.io/trello_clone_coding/)
 
 Trello Board를 보고 여러 기능들을 구현해보며 리액트 사용법을 익혀본 프로젝트입니다.
 
