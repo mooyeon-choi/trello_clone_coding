@@ -13,8 +13,10 @@ Trello Board를 보고 여러 기능들을 구현해보며 리액트 사용법�
 * List 추가
 * Card 추가
 * Card Drag & Drop
-* List Drag & Drop
-* List 설정(진행중)
+* ~~List Drag & Drop~~ (고치는중)
+* List 삭제
+* List Name 수정 (진행중)
+* List Actions(진행중)
 
 ## Built With
 
