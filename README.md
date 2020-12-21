@@ -1,6 +1,10 @@
 # My to do list (Trello Clone Coding)
 
-> [페이지 바로가기](https://mooyeon-choi.github.io/trello_clone_coding/)
+![npm](https://img.shields.io/badge/npm-6.14.8-yellow) ![yarn](https://img.shields.io/badge/yarn-1.22.10-yellow) ![last commit](https://img.shields.io/github/last-commit/mooyeon-choi/trello_clone_coding) ![issues](https://img.shields.io/github/issues/mooyeon-choi/trello_clone_coding) ![forks](https://img.shields.io/github/forks/mooyeon-choi/trello_clone_coding) ![stars](https://img.shields.io/github/stars/mooyeon-choi/trello_clone_coding)
+
+🙌반갑습니다! **My to do list**는 [Trello](https://trello.com/) 사이트를 보며 React로 따라 구현해본 프로젝트로 **PC환경**💻에서만 정상적으로 동작합니다. 모바일 웹📱에서는 확인해볼 수 없으므로 **PC**💻를 통해서만 접속해주세요!
+
+[페이지 바로가기](https://mooyeon-choi.github.io/trello_clone_coding/)
 
 ## About The Project
 
