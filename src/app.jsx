@@ -80,13 +80,27 @@ class App extends Component {
     if (event.target.className !== "add-list-input" && event.target.className !== "list-name") {
       this.setState({ onUpdateListName: null })
     } 
-    console.log(event.target.className)
   }
 
   handleChangeListName = listName => {
     const onUpdateListName = listName;
-    console.log(listName)
     this.setState({ onUpdateListName })
+  }
+
+  handleUpdateListName = (boardId, name) => {
+    const boards = this.state.boards;
+    for (let i = 0; i < boards.length - 1; i++) {
+      if (boards[i].id === boardId) boards[i].list.name = name;
+    }
+    this.setState({ boards })
+  }
+
+  handleDeleteAllCardInList = boardId => {
+    const boards = this.state.boards;
+    for (let i = 0; i < boards.length - 1; i++) {
+      if (boards[i].id === boardId) boards[i].list.cards = [];
+    }
+    this.setState({ boards })
   }
 
   render() {
@@ -109,6 +123,8 @@ class App extends Component {
               onClickFrame={this.checkClickFrame}
               onUpdateListName={this.state.onUpdateListName}
               onChangeListName={this.handleChangeListName}
+              onListNameUpdate={this.handleUpdateListName}
+              onDeleteAllCardInList={this.handleDeleteAllCardInList}
             />
           )}
         </div>

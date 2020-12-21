@@ -70,6 +70,19 @@ export default class Board extends Component {
     this.props.onChangeListName(this.props.list.name);
   }
 
+  handleListNameUpdate = (boardId, name) => {
+    this.props.onListNameUpdate(boardId, name);
+  }
+
+  handleCloseSetting = () => {
+    const openSetting = false
+    this.setState({ openSetting })
+  }
+
+  handleDeleteAllCardInList = boardId => {
+    this.props.onDeleteAllCardInList(boardId);
+  }
+
   render() {
     return (
       <div
@@ -81,7 +94,12 @@ export default class Board extends Component {
         {this.props.list ?
           <div className="list">
             { this.props.onUpdateListName === this.props.list.name ? 
-            <UpdateListForm listName={this.props.list.name}/>
+            <UpdateListForm 
+              listName={this.props.list.name}
+              boardId={this.props.id}
+              onListNameUpdate={this.handleListNameUpdate}
+              onCloseSetting={this.handleCloseSetting}
+            />
             :
             <section 
               className="list-name-space"
@@ -94,9 +112,24 @@ export default class Board extends Component {
               >
                 {this.props.list.name}
               </section>
-              <div onMouseLeave={this.handleOnListDraggable} onMouseOver={this.closeListDraggable} className="list-setting" onClick={this.handleSetting}>
+              <div 
+                onMouseLeave={this.handleOnListDraggable} 
+                onMouseOver={this.closeListDraggable} 
+                className="list-setting" 
+                onClick={this.handleSetting}
+              >
                 <i className="fas fa-ellipsis-h"></i>
-                { this.state.openSetting && <ListSetting boardId={this.props.id} onDeleteList={this.handleDeleteList} onListDraggable={this.handleOnListDraggable} /> }
+                { this.state.openSetting && 
+                  <ListSetting 
+                    boardId={this.props.id}
+                    cards={this.props.list.cards}
+                    onDeleteList={this.handleDeleteList} 
+                    onListDraggable={this.handleOnListDraggable} 
+                    onChangeListName={this.handleChangeListName}
+                    onDeleteAllCardInList={this.handleDeleteAllCardInList}
+                    onCloseSetting={this.handleCloseSetting}
+                  /> 
+                }
               </div>
             </section>
             }
