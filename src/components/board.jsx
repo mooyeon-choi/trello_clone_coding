@@ -94,7 +94,7 @@ export default class Board extends Component {
               >
                 {this.props.list.name}
               </section>
-              <div onMouseLeave={this.onListDraggable} onMouseOver={this.closeListDraggable} className="list-setting" onClick={this.handleSetting}>
+              <div onMouseLeave={this.handleOnListDraggable} onMouseOver={this.closeListDraggable} className="list-setting" onClick={this.handleSetting}>
                 <i className="fas fa-ellipsis-h"></i>
                 { this.state.openSetting && <ListSetting boardId={this.props.id} onDeleteList={this.handleDeleteList} onListDraggable={this.handleOnListDraggable} /> }
               </div>
