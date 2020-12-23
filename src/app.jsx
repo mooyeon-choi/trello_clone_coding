@@ -16,6 +16,14 @@ class App extends Component {
     updateListName: null,
   }
 
+  componentDidMount = () => {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount = () => {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
   handleDragEnter = event => {
     event.preventDefault();
     const target = event.target;
@@ -103,9 +111,18 @@ class App extends Component {
     this.setState({ boards })
   }
 
+  handleScroll = event => {
+    const flexbox = document.getElementsByClassName("flexbox")[0]
+    if (event.view.innerWidth < flexbox.scrollWidth) {
+      flexbox.scrollLeft += event.deltaY
+    } else {
+      flexbox.scrollLeft = 0
+    }
+  }
+
   render() {
     return (
-      <div onClick={this.checkClickFrame}>
+      <div onClick={this.checkClickFrame} onWheel={this.handleScroll}>
         <Navbar />
         <div className="flexbox">
           {this.state.boards.map(board =>

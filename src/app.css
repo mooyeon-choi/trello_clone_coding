@@ -6,17 +6,20 @@
 
 body {
   background-image: url("https://github.com/mooyeon-choi/trello_clone_coding/blob/master/public/images/background.jpg?raw=true");
-  background-size: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
 }
 
 /* nav */
 .navbar {
+  position: fixed;
+  width: 100%;
   font-size: 1rem;
   padding: 10px;
   height: 5vh;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .navbar-logo {
@@ -36,12 +39,12 @@ body {
   justify-content: flex-start;
 
   width: 100%;
-  height: 90vh;
+  height: 100vh;
 
-  overflow: hidden;
+  overflow: auto;
 
   margin: 0 auto;
-  padding: 15px;
+  padding: 60px 15px 15px 15px;
 }
 
 .board {
@@ -298,4 +301,19 @@ body {
 .add-card-cancel-button:hover {
   cursor: pointer;
   background-color: #2f2f2f;
+}
+
+/* hiding scrollbar */
+::-webkit-scrollbar {
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.7);
 }
