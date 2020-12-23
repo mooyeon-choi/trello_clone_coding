@@ -21,6 +21,7 @@ Trello Board를 보고 여러 기능들을 구현해보며 리액트 사용법�
 * List 삭제하기
 * List Name 수정하기
 * List Actions
+* 마우스 스크롤시 좌우 스크롤 기능
 
 ## Built With
 
